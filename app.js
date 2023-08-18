@@ -1,3 +1,4 @@
+//query selectors
 const video = document.querySelector('.player');
 const canvas = document.querySelector('.photo');
 const ctx = canvas.getContext('2d');
@@ -5,7 +6,7 @@ const strip = document.querySelector('.strip');
 const snap = document.querySelector('.snap');
 
 
-
+//video function
 function getVideo() {  
     navigator.mediaDevices.getUserMedia({video: true, audio: false })
   .then(localMediaStream => {
@@ -18,6 +19,7 @@ function getVideo() {
   });
 }
 
+//paint
 function paintToCanvas(){
     const width = video.videoWidth;
     const height = video.videoHeight;
@@ -42,7 +44,7 @@ function paintToCanvas(){
     }, 16);
 }
 
-
+//photo
 function takePhoto(){
     //played the sound
     snap.currentTime = 0;
@@ -57,6 +59,7 @@ function takePhoto(){
     strip.insertBefore(link, strip.firstChild);
 }
 
+//change pixels
 function redEffect(pixels){
    for(let i = 0; i < pixels.data.length; i+=4){
     pixels.data[i + 0]  = pixels.data[i + 1]+ 100; // red
@@ -65,7 +68,7 @@ function redEffect(pixels){
     }
     return pixels;
 }
-
+//change pixels
 function rgbSplit(pixels) {
    
     for(let i = 0; i < pixels.data.length; i+=4){
